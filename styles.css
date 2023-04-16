@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.film {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.4rem;
+  border-bottom: 1px solid #ddd;
+}
+.film img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+}
+.film .name {
+  font-weight: bold;
+}
+.no-results{
+    color:black;
+}
+
+.pagination{
+    display:flex;
+    margin:10px 30px;
+    align-items: center;
+    justify-content: center;
+    color:black;
+}
+
+.page{
+    padding:20px;
+    cursor:pointer;
+}
+
+.page.disabled{
+    cursor:not-allowed;
+    color:grey;
+}
+
+.current{
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 5px solid orange;
+    font-size: 20px;
+    font-weight: 600;
+}

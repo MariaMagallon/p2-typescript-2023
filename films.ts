@@ -14,12 +14,13 @@ export class Film {
   }
 }
 
-export const loadFilms = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=1`
-    );
-    const { results } = (await response.json()) as { results: any[] };
-    const films: Array<Film> = [];
+export const loadFilms = async (page: number) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page+1}`
+  );
+  const data: any = await response.json();
+  const films: Array<Film> = [];
+  if (data.results.length !== 0) {
     for (const {
       id,
       title,
@@ -27,10 +28,16 @@ export const loadFilms = async () => {
       backdrop_path,
       overview,
       popularity,
-    } of results) {
+    } of data.results as any[]) {
       films.push(
         new Film(id, title, release_date, backdrop_path, overview, popularity)
       );
     }
-    return films;
-  };
+    const currentPage = data.page;
+  } else {
+    console.error(
+      `Error fetching data`
+    );
+  }
+  return films;
+};
