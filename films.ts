@@ -14,9 +14,9 @@ export class Film {
   }
 }
 
-export const loadFilms = async (url: string) => {
+export const loadFilms = async (page: number) => {
   const response = await fetch(
-    url
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page+1}`
   );
   const data: any = await response.json();
   const films: Array<Film> = [];
@@ -33,28 +33,6 @@ export const loadFilms = async (url: string) => {
         new Film(id, title, release_date, backdrop_path, overview, popularity)
       );
     }
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
-    const current = document.getElementById('current');
-    var currentPage = 1;
-    var nextPage = 2;
-    var prevPage = 3;
-    var lastUrl = '';
-    var totalPages = 4;
-    currentPage = data.page;
-    nextPage = currentPage + 1;
-    prevPage = currentPage - 1;
-    totalPages = data.total_pages;
-    if(currentPage <= 1){
-        prev.classList.add('disabled');
-        next.classList.remove('disabled')
-      }else if(currentPage>= totalPages){
-        prev.classList.remove('disabled');
-        next.classList.add('disabled')
-      }else{
-        prev.classList.remove('disabled');
-        next.classList.remove('disabled')
-      }
   } else {
     console.error(
       `Error fetching data`
