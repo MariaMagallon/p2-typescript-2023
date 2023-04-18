@@ -6,7 +6,7 @@ export class Film {
     public release_date: string,
     public backdrop_path: string,
     public overview: string,
-    public popularity: string
+    public popularity: string,
   ) {}
 
   getImg(): string {
@@ -16,7 +16,7 @@ export class Film {
 
 export const loadFilms = async (page: number) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page+1}`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`
   );
   const data: any = await response.json();
   const films: Array<Film> = [];

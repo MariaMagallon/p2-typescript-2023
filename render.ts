@@ -32,7 +32,7 @@ export const render = async (films: Array<Film>) => {
         </div>
         ${renderFilms(films)}
         <div id="content" style="display: none">
-          ${renderFilms(await loadFilms(+1))}
+          ${renderFilms(await loadFilms(2))}
         <div>
       </body>
       <script>
