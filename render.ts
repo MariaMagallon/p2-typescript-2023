@@ -12,12 +12,15 @@ const head = (title: string) => `
 const renderFilms = (films: Array<Film>) => {
   let html = "";
   for (const film of films) {
-    html += `<div class="film">
+    html += `
+    <a class="name" href="films/${film.title}.html">
+    <div class="film">
       <img src="${film.getImg()}" />
       <div class="data">
         <div class="name">${film.title}</div>
       </div>
-    </div>`;
+    </div>
+    </a>`;
   }
   return html;
 };

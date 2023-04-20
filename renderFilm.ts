@@ -21,4 +21,4 @@ export const renderFilmPage = async (film: Film) => {
 };
 
 
-//TODO:només funciona pel bloc 1 el que es renderitza amb el main
+//TODO:només funciona pel bloc 1 el que es renderitza amb el main + posar fitxers en una carpeta
