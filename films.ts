@@ -7,6 +7,7 @@ export class Film {
     public backdrop_path: string,
     public overview: string,
     public popularity: string,
+    public vote_average: number,
   ) {}
 
   getImg(): string {
@@ -14,12 +15,11 @@ export class Film {
   }
 }
 
-export const loadFilms = async (page: number) => {
+export const loadFilms = async (page: number, films: Array<Film> ) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`
   );
   const data: any = await response.json();
-  const films: Array<Film> = [];
   if (data.results.length !== 0) {
     for (const {
       id,
@@ -28,10 +28,13 @@ export const loadFilms = async (page: number) => {
       backdrop_path,
       overview,
       popularity,
+      vote_average
     } of data.results as any[]) {
-      films.push(
-        new Film(id, title, release_date, backdrop_path, overview, popularity)
-      );
+      const film = new Film(id, title, release_date, backdrop_path, overview, popularity, vote_average);
+      if(film.backdrop_path !== null){
+        films.push(film);
+      }
+      
     }
   } else {
     console.error(

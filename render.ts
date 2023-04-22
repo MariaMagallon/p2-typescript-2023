@@ -1,4 +1,4 @@
-import { Film, loadFilms } from "./films.js";
+import { Film } from "./films.js";
 
 const head = (title: string) => `
 <head>
@@ -13,11 +13,12 @@ const renderFilms = (films: Array<Film>) => {
   let html = "";
   for (const film of films) {
     html += `
-    <a class="name" href="films/${film.title}.html">
+    <a href="films/${film.title}.html">
     <div class="film">
-      <img src="${film.getImg()}" />
-      <div class="data">
-        <div class="name">${film.title}</div>
+      <img src="${film.getImg()}" alt="${film.title}" />
+      <div class="film-info">
+        <h3>${film.title}</h3>
+        <span class="${getColor(film.vote_average)}">${film.vote_average}</span>
       </div>
     </div>
     </a>`;
@@ -25,23 +26,24 @@ const renderFilms = (films: Array<Film>) => {
   return html;
 };
 
+function getColor(vote: number) {
+  if(vote>= 8){
+      return 'green'
+  }else if(vote >= 5){
+      return "orange"
+  }else{
+      return 'red'
+  }
+}
+
 export const render = async (films: Array<Film>) => {
   return `
     <html lang="en">
       ${head("Film List")}
       <body>
-        <div class="pagination">
-        <button onclick="myFunction()">Load More</button>    
-        </div>
-        ${renderFilms(films)}
-        <div id="content" style="display: none">
-          ${renderFilms(await loadFilms(2))}
-        <div>
+        <main id="main">
+          ${renderFilms(films)}
+        <main>
       </body>
-      <script>
-        function myFunction() {
-          document.getElementById("content").style.display = "block";
-        }
-      </script>
     </html>`;
 };
