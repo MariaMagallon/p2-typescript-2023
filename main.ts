@@ -3,8 +3,6 @@ import { render } from "./render.js";
 import { Film, loadFilms } from "./films.js";
 import { renderFilmPage } from "./renderFilm.js";
 
-export let currentPage: number = 1; 
-
 await mkdir('films').catch(console.error);
 
 export const loadPage = async () => {
@@ -16,16 +14,16 @@ export const loadPage = async () => {
 
   const filmDetail = async (films: Array<Film>) => {
     for (const film of films) {
-      const html_page = await renderFilmPage(film);
-      const html_name: String = film.title;
-      await writeFile(`films/${html_name}.html`, html_page);
+      const htmlPage = renderFilmPage(film);
+      const htmlName: String = film.title;
+      await writeFile(`films/${htmlName}.html`, htmlPage);
     }
   };
   await filmDetail(films);
   const html = render(films);
-  await writeFile("films.html", await html);
+  await writeFile("films.html", html);
   
 }
 
 await loadPage();
-//display 3 peticions per tenir 60 resultats
+//display 3 peticions per tenir 60 resultats (20 x page)

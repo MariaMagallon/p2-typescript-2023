@@ -4,14 +4,14 @@ export class Film {
     public id: number,
     public title: string,
     public release_date: string,
-    public backdrop_path: string,
+    public poster_path: string,
     public overview: string,
     public popularity: string,
     public vote_average: number,
   ) {}
 
   getImg(): string {
-    return `https://image.tmdb.org/t/p/w500${this.backdrop_path}`;
+    return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
   }
 }
 
@@ -25,13 +25,13 @@ export const loadFilms = async (page: number, films: Array<Film> ) => {
       id,
       title,
       release_date,
-      backdrop_path,
+      poster_path,
       overview,
       popularity,
       vote_average
     } of data.results as any[]) {
-      const film = new Film(id, title, release_date, backdrop_path, overview, popularity, vote_average);
-      if(film.backdrop_path !== null){
+      const film = new Film(id, title, release_date, poster_path, overview, popularity, vote_average);
+      if(film.poster_path !== null){
         films.push(film);
       }
       
