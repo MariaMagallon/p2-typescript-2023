@@ -1,4 +1,4 @@
-import { Film } from "./films.js";
+import { Film, Genre } from "./films.js";
 
 const head = (title: string) => `
   <head>
@@ -29,8 +29,9 @@ const renderFilms = (films: Array<Film>) => {
               <h3>Directed By: </h3>
               <h3 class="field">${film.director}</h3>
             </div>
-            <p>${film.id}</p>
-            <p>${film.genres[0].name}</p>
+            <div>
+              ${getGenres(film.genres)}
+            </div>
           </div>
         </div>
       </a>`;
@@ -38,7 +39,7 @@ const renderFilms = (films: Array<Film>) => {
   return html;
 };
 
-function getColor(vote: number) {
+function getColor( vote: number ) {
   if(vote>= 8){
       return 'green'
   }else if(vote >= 5){
@@ -46,6 +47,14 @@ function getColor(vote: number) {
   }else{
       return 'red'
   }
+}
+
+function getGenres( genres: Array<Genre> ){
+  let html = ""
+  genres.forEach(genre =>{
+    html += `<h3 class="field">${genre.name}</h3>`;
+  });
+  return html;
 }
 
 //avoid null dates

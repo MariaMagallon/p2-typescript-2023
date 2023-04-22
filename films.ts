@@ -67,7 +67,6 @@ export const loadFilms = async (page: number, films: Array<Film> ) => {
       if(film.poster_path !== null){
         films.push(film);
       }
-      //console.log(film.genres[0].name);
     }
   } else {
     console.error(
