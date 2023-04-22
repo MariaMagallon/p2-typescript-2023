@@ -25,6 +25,10 @@ const renderFilms = (films: Array<Film>) => {
               <h3>Release Date: </h3>
               ${getDate(film.release_date)}
             </div>
+            <div class="row">
+              <h3>Directed By: </h3>
+              <h3 class="field">${film.director}</h3>
+            </div>
           </div>
         </div>
       </a>`;
@@ -46,9 +50,9 @@ function getColor(vote: number) {
 function getDate ( date: string ) {
   let html = ""
   if (date === undefined){
-    html += `<h3 class="date"> Comming Soon</h3>`;
+    html += `<h3 class="field"> Comming Soon</h3>`;
   } else {
-    html += `<h3 class="date"> ${date}</h3>`;
+    html += `<h3 class="field"> ${date}</h3>`;
   }
   return html
 }

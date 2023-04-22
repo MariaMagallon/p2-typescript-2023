@@ -10,7 +10,7 @@ const head = (title: string) => `
 </head>`;
 
 export const renderFilmPage = (film: Film) => {
-  const { id, title, release_date, poster_path, overview, popularity } = film;
+  const { id, title, release_date, poster_path, overview} = film;
   return `
   <html lang="en">
     ${head("Film Detail")}
