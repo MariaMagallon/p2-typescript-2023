@@ -29,6 +29,8 @@ const renderFilms = (films: Array<Film>) => {
               <h3>Directed By: </h3>
               <h3 class="field">${film.director}</h3>
             </div>
+            <p>${film.id}</p>
+            <p>${film.genres[0].name}</p>
           </div>
         </div>
       </a>`;
