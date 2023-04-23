@@ -1,5 +1,4 @@
 import { Film } from "./films.js";
-import { getGenres } from "./renderFilm.js";
 
 const head = (title: string) => `
   <head>
@@ -30,6 +29,9 @@ const renderFilms = (films: Array<Film>) => {
               <h3>Directed By: </h3>
               <h3 class="field">${film.director}</h3>
             </div>
+            <div class="more">
+              <span class="more_t">Click on the card for more</span>
+            </div>
           </div>
         </div>
       </a>`;
@@ -47,7 +49,7 @@ function getColor( vote: number ) {
   }
 }
 
-//avoid null dates
+//evitar nulls
 function getDate ( date: string ) {
   let html = ""
   if (date === undefined){

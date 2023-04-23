@@ -9,7 +9,7 @@ const head = (title: string) => `
     <title>${title}</title>
   </head>`;
 
-export const renderFilmPage = (film: Film) => {
+export const renderFilmPage = (film: Film) => { 
   return `
   <html lang="en">
     ${head("Film Detail")}
@@ -40,19 +40,19 @@ export const renderFilmPage = (film: Film) => {
 };
 
 //avoid null dates
-function getDate ( date: string ) {
-  let html = ""
-  if (date === undefined){
+function getDate(date: string) {
+  let html = "";
+  if (date === undefined) {
     html += `<p class="title_h32_field"> Comming Soon</p>`;
   } else {
     html += `<p class="title_h32_field"> ${date}</p>`;
   }
-  return html
+  return html;
 }
 
-export function getGenres( genres: Array<Genre> ){
-  let html = ""
-  genres.forEach(genre =>{
+function getGenres(genres: Array<Genre>) {
+  let html = "";
+  genres.forEach((genre) => {
     html += `<li class="genre">${genre.name}</li>`;
   });
   return html;

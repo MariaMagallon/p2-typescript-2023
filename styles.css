@@ -60,7 +60,7 @@ a {
   font-size: 16px;
 }
 
-.film-info span {
+.film-info span, .more span {
   background-color: var(--primary-color);
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
@@ -173,7 +173,6 @@ a {
   margin: 5px;
   cursor: pointer;
   display: inline-block;
-  
 }
 
 #ul-genres {
@@ -217,4 +216,14 @@ a {
 .back:hover {
   background-color: var(--white);
   color: var(--secondary-color);
+}
+
+.more {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.more span.more_t {
+  color: var(--white);
 }
