@@ -12,6 +12,7 @@
   --red: red;
   --orange: orange;
   --green: lightgreen;
+  --details: #120312;
 }
 
 body {
@@ -126,4 +127,94 @@ a {
   text-transform: uppercase;
   font-size: 48px;
   color: var(--white);
+}
+
+.img_details {
+  padding-left: 60px;
+  background-repeat: no-repeat;
+  background-color: var(--details);
+  height: fit-content;
+  background-size: cover;
+  box-shadow: inset 450px 0px 150px var(--details);
+  background-position: 50% 20%;
+}
+
+.title_details {
+  padding-top: 50px;
+  font-size: 80px;
+  color: var(--white);
+}
+
+.title_h3 {
+  font-size: 50px;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.title_h32 {
+  font-size: 15px;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.title_h32_field {
+  padding-left: 5px;
+  font-size: 15px;
+  color: var(--white);
+  font-weight: bold;
+}
+
+.genre {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border-radius: 50px;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-block;
+  
+}
+
+#ul-genres {
+  padding-bottom: 5%;
+}
+
+#ul-genres ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+}
+
+#ul-genres ul li {
+  list-style: none;
+  margin-right: 12px;
+}
+
+.overview {
+  color: var(--white);
+  font-size: 20px;
+  margin-right: 70%;
+  padding-bottom: 20px;
+}
+
+.back {
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  border-radius: 50px;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 5%;
+  color: var(--white);
+}
+
+.back a {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.back:hover {
+  background-color: var(--white);
+  color: var(--secondary-color);
 }

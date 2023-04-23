@@ -5,25 +5,20 @@ import { renderFilmPage } from "./renderFilm.js";
 
 await mkdir('films').catch(console.error);
 
-export const loadPage = async () => {
-  
-  let films: Array<Film> = [];
-  films = await loadFilms(1, films);
-  films = await loadFilms(2, films);
-  films = await loadFilms(3, films);
+let films: Array<Film> = [];
+films = await loadFilms(1, films);
+films = await loadFilms(2, films);
+films = await loadFilms(3, films);
 
-  const filmDetail = async (films: Array<Film>) => {
-    for (const film of films) {
-      const htmlPage = renderFilmPage(film);
-      const htmlName: String = film.title;
-      await writeFile(`films/${htmlName}.html`, htmlPage);
-    }
-  };
-  await filmDetail(films);
-  const html = render(films);
-  await writeFile("films.html", html);
+const filmDetail = async (films: Array<Film>) => {
+  for (const film of films) {
+    const htmlPage = renderFilmPage(film);
+    const htmlName: String = film.title;
+    await writeFile(`films/${htmlName}.html`, htmlPage);
+  }
+};
+await filmDetail(films);
+const html = render(films);
+await writeFile("films.html", html);
   
-}
-
-await loadPage();
 //display 3 peticions per tenir 60 resultats (20 x page)

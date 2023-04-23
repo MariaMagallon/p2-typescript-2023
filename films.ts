@@ -5,6 +5,7 @@ export class Film {
     public title: string,
     public release_date: string,
     public poster_path: string,
+    public backdrop_path: string,
     public overview: string,
     public director: string,
     public genres: Array<Genre>,
@@ -12,6 +13,10 @@ export class Film {
   ) {}
 
   getImg(): string {
+    return `https://image.tmdb.org/t/p/w500${this.backdrop_path}`;
+  }
+
+  getPoster(): string {
     return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
   }
 
@@ -58,12 +63,13 @@ export const loadFilms = async (page: number, films: Array<Film> ) => {
       title,
       release_date,
       poster_path,
+      backdrop_path,
       overview,
       vote_average
     } of data.results as any[]) {
       const director = await getDirector(id, apiKey);
       const genres = await getGenres(id, apiKey);
-      const film = new Film(id, title, release_date, poster_path, overview, director, genres, vote_average);
+      const film = new Film(id, title, release_date, poster_path, backdrop_path, overview, director, genres, vote_average);
       if(film.poster_path !== null){
         films.push(film);
       }

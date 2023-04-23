@@ -1,4 +1,5 @@
-import { Film, Genre } from "./films.js";
+import { Film } from "./films.js";
+import { getGenres } from "./renderFilm.js";
 
 const head = (title: string) => `
   <head>
@@ -15,7 +16,7 @@ const renderFilms = (films: Array<Film>) => {
     html += `
       <a href="films/${film.title}.html">
         <div class="film">
-          <img src="${film.getImg()}" alt="${film.title}" />
+          <img src="${film.getPoster()}" alt="${film.title}" />
           <div class="film-info">
             <h3>${film.title}</h3>
             <span class="${getColor(film.vote_average)}">${film.vote_average}</span>
@@ -28,9 +29,6 @@ const renderFilms = (films: Array<Film>) => {
             <div class="row">
               <h3>Directed By: </h3>
               <h3 class="field">${film.director}</h3>
-            </div>
-            <div>
-              ${getGenres(film.genres)}
             </div>
           </div>
         </div>
@@ -47,14 +45,6 @@ function getColor( vote: number ) {
   }else{
       return 'red'
   }
-}
-
-function getGenres( genres: Array<Genre> ){
-  let html = ""
-  genres.forEach(genre =>{
-    html += `<h3 class="field">${genre.name}</h3>`;
-  });
-  return html;
 }
 
 //avoid null dates
