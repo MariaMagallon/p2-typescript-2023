@@ -10,12 +10,15 @@ const head = (title: string) => `
   </head>`;
 
 export const renderFilmPage = (film: Film) => { 
+  //evitar nulls
+  const result: string = film.getImg();
+  const urlImg: string = film.backdrop_path ? result : "../assets/placeholder.png";
   return `
   <html lang="en">
     ${head("Film Detail")}
     <body>
       <main>
-        <section class="img_details" style="background-image: url(${film.getImg()});">
+        <section class="img_details" style="background-image: url(${urlImg});">
           <h1 class="title_details">${film.title}</h1>
           <div class="back"><a href="../films.html">Go Back</a></div>
           <div class="row">
@@ -39,19 +42,16 @@ export const renderFilmPage = (film: Film) => {
   </html>`;
 };
 
-//avoid null dates
+//evitar nulls
 function getDate(date: string) {
-  let html = "";
-  if (date === undefined) {
-    html += `<p class="title_h32_field"> Comming Soon</p>`;
-  } else {
-    html += `<p class="title_h32_field"> ${date}</p>`;
-  }
+  let html: string = "";
+  date ? html += `<p class="title_h32_field"> ${date}</p>` : html += `<p class="title_h32_field"> Coming Soon</p>`;
   return html;
 }
 
+//obtenir el llistat de generes de cada pel.licula
 function getGenres(genres: Array<Genre>) {
-  let html = "";
+  let html: string = "";
   genres.forEach((genre) => {
     html += `<li class="genre">${genre.name}</li>`;
   });

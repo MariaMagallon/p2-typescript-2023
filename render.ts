@@ -10,7 +10,7 @@ const head = (title: string) => `
   </head>`;
 
 const renderFilms = (films: Array<Film>) => {
-  let html = "";
+  let html: string = "";
   for (const film of films) {
     html += `
       <a href="films/${film.title}.html">
@@ -41,23 +41,19 @@ const renderFilms = (films: Array<Film>) => {
 
 function getColor( vote: number ) {
   if(vote>= 8){
-      return 'green'
+      return 'green';
   }else if(vote >= 5){
-      return "orange"
+      return "orange";
   }else{
-      return 'red'
+      return 'red';
   }
 }
 
 //evitar nulls
 function getDate ( date: string ) {
-  let html = ""
-  if (date === undefined){
-    html += `<h3 class="field"> Comming Soon</h3>`;
-  } else {
-    html += `<h3 class="field"> ${date}</h3>`;
-  }
-  return html
+  let html: string = "";
+  date ? html += `<h3 class="field"> ${date}</h3>` : html += `<h3 class="field"> Coming Soon</h3>`;
+  return html;
 }
 
 export const render = (films: Array<Film>) => {
